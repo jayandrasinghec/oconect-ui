@@ -1,0 +1,14 @@
+<div class="upload-area">
+         <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+            <h3 class="file_name" *ngIf="files.length>0"  >{{files[0].name}}</h3>
+            <h1 *ngIf="files.length===0"><span style="color:#039be5">BROWSE</span><span style="color:#D5D5D5"> OR DROP FILES HERE</span> </h1>
+            <h4 *ngIf="files.length>0"><span style="color:rgb(126, 126, 126)">BROWSE OR DROP FILES HERE</span></h4>
+            <input type="file" style="display:none" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #file >
+            <button  class="file-button" (click)="file.click()"></button>
+          </div>
+           <button type="button" class="start-upload-btn btn btn-success" (click)="startUpload($event)" [disabled]="files.length==0">
+            Start Upload
+          </button>
+
+       
+</div>

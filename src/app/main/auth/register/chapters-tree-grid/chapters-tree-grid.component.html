@@ -1,0 +1,23 @@
+<form name="chapterForm" [formGroup]="chapterForm" novalidate>     
+
+    <mat-form-field appearance="outline">
+        <mat-label>Chapter</mat-label>
+         <mat-select  required [(value)]="selectedChapter" >
+             <mat-option *ngFor="let item of chapters" [value]="item">
+             {{item.name}}
+             </mat-option>
+         </mat-select> 
+          <input matInput formControlName="chapter" [readonly]="true" hidden>
+     </mat-form-field> 
+     <div>
+        <button mat-raised-button color="accent" class="submit-button" aria-label="SELECT"
+        (click)="selectChapter($event)">
+            SELECT CHAPTER
+            </button>
+            <button mat-raised-button color="accent" class="submit-button" aria-label="Cancel"
+            (click)="closeChapter($event)" >
+            Cancel
+            </button>
+     </div>
+    
+</form>

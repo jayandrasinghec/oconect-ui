@@ -1,0 +1,331 @@
+@import "src/@fuse/scss/fuse";
+
+app-add-other-course {
+    #lock {
+        width: 100%; 
+        background-size: cover;
+        /*height: calc(100vh - 50px);*/
+        #lock-form-wrapper {
+            flex: 1 0 auto;
+           // padding: 32px;
+
+            @include media-breakpoint('xs') {
+                padding: 16px;
+            }
+
+            #lock-form {
+                background: white;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                max-width: 100%;
+                padding: 20px;
+               // @include mat-elevation(16);
+
+                @include media-breakpoint('xs') {
+                    padding: 24px;
+                    width: 100%;
+                }
+
+                .lock-form-header {
+                    display: flex;
+                    flex: 1 0 auto;
+                    text-align: center;
+
+                    .avatar-container {
+                        position: relative;
+                        margin-right: 16px;
+
+                        .avatar {
+                            margin: 0;
+                        }
+
+                        @include media-breakpoint('xs') {
+                            margin-right: 0;
+                        }
+
+                        mat-icon {
+                            position: absolute;
+                            bottom: -2px;
+                            right: -6px;
+                        }
+                    }
+
+                    .title_head{
+                        width:100%;
+                    }
+                    .title {
+                        font-size: 20px;
+                        margin-bottom: 8px;
+
+                        @include media-breakpoint('xs') {
+                            margin-top: 16px;
+                            text-align: center;
+                        }
+                    }
+
+                    .subtitle {
+
+                        @include media-breakpoint('xs') {
+                            text-align: center;
+                        }
+                    }
+                }
+                 .instruction-con{
+                        color: #005571;
+                        h3{
+                            font-size: 16pt;   
+                                margin: 3px;                         
+                        }
+                        p{
+                              font-size: 14pt;  
+                              margin: 3px;
+                        }
+
+                    } 
+                .mat-step-icon{
+                        background-color: #FFFFFF;
+                        color: #a2a2a2;
+                        border: 5px solid #a2a2a2;
+                        padding: 15px;
+                        font-weight: bold;
+                        font-size: 16pt;
+                }
+                .mat-step-icon-selected{
+                        background-color: #FFFFFF;
+                        color: #005571;
+                        border: 5px solid #00a9e1;
+                        padding: 15px;
+                        font-weight: bold;
+                        font-size: 16pt;
+                }
+
+                form {
+                    width: 100%;
+                    margin: 32px 0 0 0;
+
+                    mat-form-field {
+                        width: 100%;
+                    }
+                    .descriptionArea{
+                        min-height: 100px;
+                    }
+                    .mat-form-field-appearance-outline {
+                        .mat-form-field-outline-start{
+                            border-radius:0px;
+                        }
+                        .mat-form-field-outline-end{
+                            border-radius:0px; 
+                        }
+                        .mat-form-field-wrapper{
+                            margin:  0px;
+                            padding-bottom: 5px;
+                        }
+                    }
+
+                      
+                    .fileupload{
+                        background-size: contain; 
+                        margin: auto;                       
+                    }   
+                    .ddinfo{
+                            color: #005571;
+                            font-weight: bold;
+                            text-align: center;
+                        }  
+                     .progressCon{
+                         width: 200px;
+                         height: 200px;
+                         position: relative;
+                         .mat-progress-spinner{
+                            width: 200px;
+                            height: 200px;
+                         }
+                         .progress-label{
+                                position: absolute;
+                                top: 50px;
+                                text-align: center;
+                                left: 35px;
+                                h3{
+                                    font-weight: bold;
+                                    font-size: 20pt;
+                                    margin: 10px;
+                                }
+                                h5{
+                                    font-size: 18pt;
+                                     margin: 0px;
+                                }
+                         }
+                     }
+                    .add-file-button{
+                        margin-left: 30px;
+                    }
+
+                    .submit-button {
+                        width: 150px;
+                        /* margin: 16px auto; */
+                        /* display: block; */
+                        border-radius: 0px;
+                        font-size: 14pt;
+
+                        @include media-breakpoint('xs') {
+                            width: 90%;
+                        }
+                    }
+                    .upload-area {
+                        width: 50%;
+                        .drop-container {
+                                height: auto;
+                                min-height: 100px;
+                              /*  border: 2px dotted #D5D5D5;*/
+                                position: relative;
+                               /* width: 80%;*/
+                                 display: inline-block;
+                                 .uploadImg{
+                                     width: 150px;
+                                     margin: auto;
+                                     display: block;
+                                 }
+
+                                h1 {
+                                    margin: 32px;
+                                    text-align: center;
+                                }
+                                h4{
+                                    text-align: center;
+                                    margin-top: 0px;
+                                    font-size: 12px;
+                                }
+                                .file_name{
+                                    margin-top: 24px;
+                                    margin-bottom: 0;
+                                    color: #3B6DBD;
+                                    font-size: 24px;
+                                }
+                            }
+
+                        .start-upload-btn {
+                            float: right;
+                            margin: 20px 0 10px;
+                            background-color: #039be5;
+                            opacity: 1;
+                            border: none;
+                            width: 100px;
+                            height: 30px;
+                            border-radius: 4px;
+                            color: white;
+                        }
+
+                        .is-drop-over {
+
+                            border: 2px dotted green;
+                        }
+
+                        .file_name {
+                            text-align: center;
+                        }
+
+                        .file-button {
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            background: transparent;
+                            border: 0px;
+                            margin-bottom: 20px;
+                        }
+                    }
+                    .courseDetailArea{
+                        width: 50%;
+                        padding: 50px 0px;
+                        .button-con{
+                            text-align: right;
+                            width: 100%;
+                        }
+                    }
+                    .jqxDropDownButton  {
+                        position: relative;
+                        margin-bottom: 20px;
+                        width: 100%;
+                        .label {
+                            position: relative;
+                            font-size: 13px;
+                            top: 10px;
+                            left: 7px;
+                            background: #FFF;
+                            padding: 0 5px;
+                            text-transform: uppercase;
+                            color: rgba(0, 0, 0, 0.6);
+                        }
+                                              
+                    }   
+                    .jqx-widget-content {
+                        width: 100%!important;
+                        padding-top: 20px;
+                        border-radius: 5px;
+                    }
+                    .chaptersArea{
+                        width: 100%;
+                        min-height: 300px;
+                        .mat-tab-group {
+                            flex-direction: row;
+                            width: 100%;
+                            height: 250px;
+                        }
+                        .mat-tab-header {
+                        border-bottom: none;
+                        }
+                        .mat-tab-header-pagination {
+                            display: none !important;
+                        }
+                        .mat-tab-labels {
+                            flex-direction: column;
+                        }
+                        .mat-ink-bar {
+                            height: 100%;
+                            left: 98% !important;
+                        }
+                        .mat-tab-body-wrapper {
+                            flex: 1 1 auto;
+                        }
+                        .mat-tab-label-active{
+                            background: #e2e2e2;
+                            color: #000000;
+                        }
+                        .user-con{
+                            .member{
+                                width: 30%;
+                                padding: 10px;
+                                .avatar{
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                    width: 80px;
+                                    height: 80px;
+                                }
+                                .name{
+                                    padding: 0px 10px;
+                                    input[type=checkbox]{
+                                        width: 20px;
+                                        height: 20px;
+                                    }
+                                    h5{
+                                        margin: 0px 10px;
+                                        font-size: 12pt;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .membersArea{
+                         width: 70%;
+                    }
+                }
+
+                .message {
+                    font-weight: 600;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+
+<div id="lock" fxLayout="column">
+
+    <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="lock-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="lock-form-header" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+
+                <div class="title_head">
+                    <div class="title">JOIN US</div>
+                    <div class="subtitle"></div>
+                </div>
+
+            </div>
+
+            <form name="lockForm" [formGroup]="invitationForm"  (ngSubmit)="submit($event)" novalidate>
+
+              <div class="">
+                    <h4>
+                        If a report is bound to a datasource and you want to modify the connection string, you can do so at run time using following code, without the need to update the report definition itself.
+                    </h4>           
+              </div>   
+                
+             
+              <button mat-raised-button class="submit-button" color="accent" aria-label="UNLOCK" [class.spinnerBtn]="showSpinner">
+                   ACCEPT
+                </button>
+
+            </form>
+
+            <div class="message" >
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

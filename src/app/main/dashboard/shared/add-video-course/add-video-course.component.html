@@ -1,0 +1,144 @@
+
+<div id="lock" fxLayout="column">
+    
+        <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    
+            <div id="lock-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+    
+                <div class="lock-form-header" fxLayout="column" fxLayoutAlign="center center"
+                     fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+     
+                    <div class="title_head">
+                        <div class="title">ADD VIDEO</div>                        
+                    </div>
+    
+                </div>
+                <div class="tab-container">
+                    <mat-horizontal-stepper [linear]="true" #stepper>
+                        <mat-step [stepControl]="videoUploadForm" >
+                            <form [formGroup]="videoUploadForm" >
+                            <ng-template matStepLabel></ng-template>
+                                 <div class="row" fxLayout="row" fxLayoutAlign="start start">
+                                      
+                                      <div class="uploadArea" fxLayout="column" fxLayoutAlign="start start">
+                                                 <div class="" style="margin: auto" *ngIf="uploadStatus=='upload'">                   
+                                                   <div class="upload-area">
+                                                            <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+                                                                <img *ngIf="files.length===0" class="uploadImg" src="../../../../../assets/upload-icon.png"/>
+                                                                <img *ngIf="files.length>0" class="uploadImg" src="../../../../../assets/video-icon.png"/>
+                                                                <h3 class="file_name" *ngIf="files.length>0"  >{{files[0].name}}</h3>
+                                                                <h1 *ngIf="files.length===0"><span style="color:#039be5;text-align: center">BROWSE OR<br/> DRAG AND DROP<br/> HERE </span> </h1>
+                                                                <input type="file" style="display:none" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #file />
+                                                                <button  class="file-button" (click)="file.click()"></button>
+                                                            </div>                               
+                                                    </div> 
+                                                </div>                                             
+                                                <div class="" style="margin: auto" *ngIf="uploadStatus=='progress'"> 
+                                                        <div class="progressCon">
+                                                            <mat-progress-spinner
+                                                                class="example-margin"
+                                                                [color]="color"
+                                                                [mode]="mode"
+                                                                [value]="progress"
+                                                                [diameter]="200">
+                                                            </mat-progress-spinner>
+                                                            <div class="progress-label">
+                                                                <h3>{{progress}}%</h3>
+                                                                <h5> {{(progress<100)? 'UPLOADING':'UPLOADED'}}     </h5>
+                                                            </div>
+                                                        </div>
+                                                        <p></p>
+                                                 </div>
+                                                 
+                                                <div class="video-thumb-con" >                         
+                                                  <!--  <img #thumnailImg  width="300px"  />
+                                                    <video  #videotag  id="main-video" controls (loadedmetadata)="metaDataLoaded($event)"  >                                           
+                                                    </video>
+                                                    <canvas #canvas id="video-canvas"  ></canvas>  -->  
+                                                    <img width="200" height="200" [src]="videoThumImgUrl"/>                                                     
+                                                </div>
+                                                <div class="" style="text-align: right;width:100%">
+                                                    <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                    *ngIf="showUploadButton" [class.spinnerBtn]="showSpinner" (click)="startUpload($event)">
+                                                                UPLOAD
+                                                    </button> 
+                                                     <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                     *ngIf="showSubmitButton== true && progress==100"
+                                                     [class.spinnerBtn]="showSpinner" (click)="continue($event)">
+                                                      CONTINUE
+                                                    </button> 
+                                                </div>
+                                                <div class="" id="video_conteiner_wer">
+
+                                                </div>
+                                                                      
+                                        </div>                                        
+                                 </div>   
+                            </form>
+                        </mat-step>
+                         <mat-step [stepControl]="courseForm">
+                            <form [formGroup]="courseForm">
+                            <ng-template matStepLabel></ng-template>
+                            <div class="addressFormcontrol" fxLayout="column" fxlayoutalign="start center">
+                                  <mat-form-field appearance="outline" >
+                                            <mat-label>TITLE</mat-label>
+                                            <input matInput formControlName="title">
+                                            
+                                            <mat-error *ngIf="!courseForm.get('title').hasError('required') &&
+                                                        courseForm.get('title').hasError('title')">
+                                                Please enter  title.
+                                            </mat-error>
+                                    </mat-form-field>     
+                                    <mat-form-field appearance="outline" >
+                                        <mat-label>DESCRIPTION</mat-label>
+                                        <textarea matInput formControlName="description" matTextareaAutosize class="descriptionArea" ></textarea>
+                                        
+                                        <mat-error *ngIf="!courseForm.get('description').hasError('required') &&
+                                                    courseForm.get('description').hasError('description')">
+                                            Please enter  description.
+                                        </mat-error>
+                                    </mat-form-field>  
+                                    <div class="jqxDropDownButton">
+                                                <label class="label">Chapters</label>
+                                                <!-- <jqxDropDownButton #myDropDownButton [width]="200" [height]="25"> -->
+                                                    <jqxTree #myTree (onCheckChange)="myTreeOnSelect($event)"
+                                                        [width]="200" [height]="100" [source]="chapterStructure" [hasThreeStates]="true" [checkboxes]="true">
+                                                        
+                                                    </jqxTree>
+                                                <!-- </jqxDropDownButton>-->
+                                    </div>  
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>DURATION IN SECONDS</mat-label>
+                                        <input matInput type="number" formControlName="duration" maxlength="10">
+                                        
+                                        <mat-error>
+                                            Please enter course duration.
+                                        </mat-error>
+                                    </mat-form-field>
+                                     <div class="" style="text-align: right;float: right;width:100%">
+                                                    <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                     [class.spinnerBtn]="showSpinner" (click)="submit($event)">
+                                                      SUBMIT
+                                                    </button> 
+                                     </div>
+                            </div>
+                            </form>
+                        </mat-step> 
+                                              
+                </mat-horizontal-stepper>
+
+                </div>
+                 <div class="instruction-con">
+                    <h3>Instruction</h3>
+                    <p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>2. Nullam eu massa sit amet sapien consectetur fringilla.</p>
+                </div>
+    
+                
+    
+            </div>
+    
+        </div>
+    
+    </div>
+    

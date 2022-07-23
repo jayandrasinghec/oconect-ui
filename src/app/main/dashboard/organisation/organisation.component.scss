@@ -1,0 +1,31 @@
+@import "src/@fuse/scss/fuse";
+ 
+ 
+ app-organisation{
+    .textalignCenter{text-align: center;}
+     .addchapter{
+      text-align: right;
+      font-family: bold;
+       }
+      .chapter-con{
+            max-height: 500px;
+      }
+      
+      .dashboard-header{
+             border-bottom: 1px solid #c7bdbd;
+            flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center; padding: 0px 10px;
+            .add-button-con{
+                  border-left: 1px solid #c7bdbd;
+                  padding: 0px 10px;
+                  .add-button{
+                  margin: auto;
+                  display: block;
+                  margin-top: 5px;
+            }
+           }
+
+      }
+
+ }
+
+ 

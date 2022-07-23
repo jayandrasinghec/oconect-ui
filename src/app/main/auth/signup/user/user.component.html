@@ -1,0 +1,64 @@
+<form [formGroup]="userForm">
+    <ng-template matStepLabel>Fill out basic details</ng-template>
+    
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>ChapterName</mat-label>
+        <input matInput formControlName="chaptername" readonly>
+    </mat-form-field>
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+
+
+            <mat-error *ngFor="let validation of validation_messages.username">
+                <mat-error class="error-message" *ngIf="userForm.get('username').hasError(validation.type) && (userForm.get('username').dirty || userForm.get('username').touched)">
+                    {{validation.message}}
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Mobile</mat-label>
+        <input matInput formControlName="mobile" [pattern]="mobNumberPattern">
+        <mat-error *ngIf="userForm.get('mobile').hasError('required')">
+            Mobile Number is required
+        </mat-error>
+        <mat-error
+            *ngIf="!userForm.get('mobile').hasError('required') &&
+            userForm.get('mobile').hasError('mobile')">
+            Please enter Mobile Number
+        </mat-error>
+    </mat-form-field>
+
+    
+    <div >
+        <mat-form-field  appearance="outline">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngFor="let validation of validation_messages.password">
+                <mat-error class="error-message" *ngIf="userForm.get('password').hasError(validation.type) && (userForm.get('password').dirty || userForm.get('password').touched)">
+                    {{validation.message}}
+                </mat-error>
+            </mat-error>
+          </mat-form-field>
+        
+          <mat-form-field  appearance="outline">
+            <input matInput type="password" placeholder="Confirm Password" formControlName="confirmpassword" required>
+            <mat-error *ngFor="let validation of validation_messages.confirmpassword">
+                <mat-error class="error-message" *ngIf="userForm.get('confirmpassword').hasError(validation.type) && (userForm.get('confirmpassword').dirty || userForm.get('confirmpassword').touched)">
+                    {{validation.message}}
+                </mat-error>
+            </mat-error>
+          </mat-form-field>
+    </div>
+    
+    <div>
+        <mat-checkbox [(checked)]="isChecked" (change)="onCheckboxChange($event)">Text</mat-checkbox>
+    </div>
+</form>

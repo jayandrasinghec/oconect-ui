@@ -1,0 +1,71 @@
+ <div id="videocourses" fxLayout="column" fxLayoutAlign="center">
+          <div class="header">
+              <!--  <div class="button-con" *ngIf="isCoOrdinator">
+                        <div class="add-button-con">
+                                <button mat-fab class="add-button blue-button" (click)="addCourse($event)" aria-label="Add Course">
+                                        <mat-icon>add</mat-icon>                                        
+                                </button>   
+                                <label class="btnlabel font-size-16 font-weight-700">Add video</label>
+                            </div>
+                </div>-->
+                <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                    fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center">
+
+                    <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16 secondary-text">search</mat-icon>
+                            <input [(ngModel)]="searchTerm"  (input)="filterCoursesByTerm()" type="text" placeholder="Search " fxFlex>
+                        </div>                       
+                    </div> 
+                     <button mat-fab class="add-button blue-button" (click)="addCourse($event)" style="margin-left: 10px">
+                            <mat-icon>add</mat-icon>
+                     </button>
+                </div>
+            </div>
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50"
+                     fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">
+
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+
+                        <div class="header" fxLayout="row" fxLayoutAlign="center center"
+                             [ngClass]="course.category + '-bg'">
+                            <div class="category" fxFlex>
+                                {{course.category}}
+                            </div> 
+                        </div>
+
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto" (click)="handleVideoClick(course)">
+                        <!--<div class="h1">{{course.title}}</div>
+                            <div class="updated">Updated {{course.updated}}</div>-->
+                            <div class="thumbnail-con">
+                                <img [src]="course.thumbnail.url"/>
+                            </div>
+                            <div class="playicon-con">
+                                <mat-icon class="length-icon s-80">play_circle_filled_white</mat-icon>                                
+                            </div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="start start">
+                           <!-- <button mat-button color="accent"
+                                    [routerLink]="'/apps/academy/courses/' + course.id + '/' + course.slug">
+                                START
+                            </button>-->
+                              <div class="length" fxLayout="row" fxLayoutAlign="center center">
+                                <mat-icon class="length-icon s-20">access_time</mat-icon>
+                                <div class="min">{{course.length}} min</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="no-courses" *ngIf="filteredCourses.length === 0">
+                    No courses found!
+                </div>
+
+            </div>
+
+        </div>

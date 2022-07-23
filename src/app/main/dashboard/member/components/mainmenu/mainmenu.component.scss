@@ -1,0 +1,28 @@
+@import "src/@fuse/scss/fuse";
+ 
+ 
+app-member{
+    .main-menu-wrapper{
+        padding: 50px;
+
+        .widget{
+            text-align: center;
+
+            .progress-bar{
+                height: 10px;
+            }
+            .score-label{
+                position: absolute;
+                top: 38%;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+       
+
+ }
+
+ 
+
+ 

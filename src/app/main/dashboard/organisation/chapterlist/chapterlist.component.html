@@ -1,0 +1,118 @@
+<div class="content">
+    <div class="chapter-con">
+        <div class="chapter-container">
+            <div class="left-content">       
+                <div class="section-header">
+                    <h2>Chapters</h2>
+                </div>                 
+                <div class="chapter-thumb-container">
+                    <div class="chapter-thumb-list" *ngFor="let item of chapters" [colspan]="1" [rowspan]="1">
+                        <div class="widget">
+                            <div class="fuse-card auto-width mb-32 textalignCenter" [ngClass.gt-sm]="'mb-0'"
+                                (click)="chapterClickHandler($event, item)">
+    
+                                <div class="chapter-thumb" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p chapter-heading">
+                                        <div class="font-size-22 font-weight-300 line-height-1">{{item.name}}</div>
+                                    </div>
+                                    <div class="chapter-desc">
+                                        <div class="content">
+                                            <div class="w-100-p text-white">
+                                                <div class="font-size-70 font-weight-300 line-height-1">
+                                                    {{item.children.length}}
+                                                </div>
+                                                <div class="h3 font-size-14">SUB CHAPTERS</div>                                    
+                                            </div>
+                                        </div>
+                                        <div class="content white-bg">
+                                            <div class="w-100-p">
+                                                <div class="font-size-30 font-weight-300 line-height-1 light-blue-fg">
+                                                0
+                                                </div>
+                                                <div class="h3 font-size-14">ACTIVITY</div>
+                                            <!--  <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg">
+                                                    {{item.activity}}
+                                                </div> -->
+                                            </div>
+                                            <div class="w-100-p">
+                                                <div class="font-size-30 font-weight-300 line-height-1 light-blue-fg">
+                                                0
+                                                </div>                                    
+                                                <div class="h3 font-size-14">MEMBERS</div>
+                                            <!--  <div lass="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                                    {{item.members.length}}
+                                                </div> -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                </div>
+                                
+                                <!-- <div class="h-96 w-100-p">
+                                        <img src="../../../../../assets/images/graph/graph.JPG">
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            <div class="right-content"> 
+                <div class="profile-box latest-activity">
+                    <header class="accent">
+                        <div class="title">Co-Ordinators ( {{membersProfile ? membersProfile.length : 0}} )</div>
+                    </header>
+                    <div fxlayout="row wrap" class="content">
+                        <div class="activities">
+                            <div fxlayout="row" *ngFor="let item of membersProfile" > 
+                                <div class="activity ng-star-inserted">
+                                <img class="avatar" alt="" [src]="item.photo">
+                                <div fxlayout="column" class="ng-tns-c188-32">
+                                    <div class="ng-tns-c188-32">
+                                        <span class="username">{{item.name}}</span>
+                                        <!-- <span class="message"> started following you.</span> -->
+                                    </div>
+                                    <!-- <span class="time secondary-text">13 mins. ago</span> -->
+                                </div>
+                            </div>
+                        </div>
+                            <!-- <div class="activity ng-star-inserted">
+                                <img class="avatar" alt="Alice Freeman" src="assets/images/avatars/alice.jpg">
+                                <div fxlayout="column" class="ng-tns-c188-32">
+                                    <div class="ng-tns-c188-32">
+                                        <span class="username">Alice Freeman</span>
+                                        <span class="message"> started following you.</span>
+                                    </div>
+                                    <span class="time secondary-text">13 mins. ago</span>
+                                </div>
+                            </div>
+                            <div class="activity ng-star-inserted">
+                                <img class="avatar" alt="Alice Freeman" src="assets/images/avatars/alice.jpg">
+                                <div fxlayout="column" class="ng-tns-c188-32">
+                                    <div class="ng-tns-c188-32">
+                                        <span class="username">Alice Freeman</span>
+                                        <span class="message"> started following you.</span>
+                                    </div>
+                                    <span class="time secondary-text">13 mins. ago</span>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="pagination">
+            <ul>
+                <li><span>1</span></li>
+                <li><span>2</span></li>
+                <li><span>3</span></li>
+                <li><span>4</span></li>
+            </ul>
+        </div>      -->       
+    </div>    
+</div>

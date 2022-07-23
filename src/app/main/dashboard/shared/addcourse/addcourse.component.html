@@ -1,0 +1,216 @@
+
+<div id="lock" fxLayout="column">
+    
+        <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="start start">
+    
+            <div id="lock-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+    
+                <div class="lock-form-header" fxLayout="column" fxLayoutAlign="center center"
+                     fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <div class="title_head">
+                        <div class="title">ADD COURSE</div>                        
+                    </div>    
+                </div>
+                <div class="tab-container">
+                    <mat-horizontal-stepper [linear]="true" #stepper>
+                        <mat-step [stepControl]="courseUploadForm" >
+                            <form [formGroup]="courseUploadForm" >
+                            <ng-template matStepLabel></ng-template>
+                                 <div class="row" fxLayout="row" fxLayoutAlign="start start">
+                                      <div  class="courseDetailArea" fxLayout="column" fxLayoutAlign="start start">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>TRACK MODE</mat-label>
+                                                <mat-select  required [(value)]="trackedItem" (selectionChange)="trackModeChange($event)">
+                                                    <mat-option *ngFor="let item of trackmodes" [value]="item">
+                                                    {{item.label}}
+                                                    </mat-option>
+                                                </mat-select>                 
+                                            </mat-form-field>  
+                                      </div>
+                                      <div class="upload-area" fxLayout="column" fxLayoutAlign="start start">
+                                            <div class="" style="margin: auto" *ngIf="uploadStatus=='upload'">                   
+                                                   <div class="">
+                                                            <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+                                                                <img *ngIf="files.length===0" class="uploadImg" src="../../../../../assets/upload-icon.png"/>
+                                                                <img *ngIf="files.length>0" class="uploadImg" src="../../../../../assets/zip-icon.png"/>
+                                                                <h3 class="file_name" *ngIf="files.length>0"  >{{files[0].name}}</h3>
+                                                                <h1 *ngIf="files.length===0"><span style="color:#039be5;text-align: center">BROWSE OR<br/> DRAG AND DROP<br/> HERE </span> </h1>
+                                                                <input type="file" style="display:none" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #file />
+                                                                <button  class="file-button" (click)="file.click()"></button>
+                                                            </div>                               
+                                                    </div> 
+                                                 <!--   <div class="col-md-12">
+                                                            <div class="fileupload" appDragDropFileUpload (click)="fileField.click()"
+                                                                (fileDropped)="fileDropped($event)">                                                            
+                                                                <input type="file" name="avatars" #fileField (change)="fileDropped($event.target.files)" hidden multiple>
+                                                                
+                                                            </div>
+                                                            <h2 class="ddinfo">BROWSE OR<br/> DRAG AND DROP<br/> HERE </h2>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="image-list" *ngFor="let file of fileArr; let i = index">
+                                                                <div class="profile">
+                                                                    <img [src]="sanitize(file['url'])" alt="">
+                                                                </div>
+                                                                <p>{{file.item.name}}</p>
+                                                            </div>
+                                                            <p class="message">{{msg}}</p>
+                                                        </div> -->
+
+
+
+                                                </div>
+                                                <div class="" style="margin: auto" *ngIf="uploadStatus=='zipicon'"> 
+                                                    <div class="zipCon">
+                                                        <img src="../../../../../assets/zip-icon.png"/>
+                                                    </div>
+                                                    <p style="color: #005571;font-size: 12pt;">{{ (dropFile)?dropFile[0].name:''}}</p>
+                                                </div>
+                                                <div class="" style="margin: auto" *ngIf="uploadStatus=='progress'"> 
+                                                    <div class="progressCon">
+                                                        <mat-progress-spinner
+                                                            class="example-margin"
+                                                            [color]="color"
+                                                            [mode]="mode"
+                                                            [value]="progress"
+                                                            [diameter]="200">
+                                                        </mat-progress-spinner>
+                                                        <div class="progress-label">
+                                                            <h3>{{progress}}%</h3>
+                                                            <h5> {{(progress<100)? 'UPLOADING':'UPLOADED'}}     </h5>
+                                                        </div>
+                                                    </div>
+                                                    <p></p>
+                                                </div> 
+                                                <div class="" style="text-align: center;float: right;width:100%;margin:5px;">
+                                                    <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                    *ngIf="showUploadButton"
+                                                        [class.spinnerBtn]="showSpinner" (click)="uploadCourse($event)">
+                                                                UPLOAD
+                                                    </button> 
+                                                     <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                     *ngIf="showUploadButton== false && progress==100"
+                                                     [class.spinnerBtn]="showSpinner" (click)="continue($event,courseUploadForm)">
+                                                      CONTINUE
+                                                    </button> 
+                                                </div>
+                                                                      
+                                        </div>                                        
+                                 </div>   
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="courseDetailForm">
+                            <form [formGroup]="courseDetailForm">
+                            <ng-template matStepLabel></ng-template>
+                            <div class="addressFormcontrol" fxLayout="column" fxlayoutalign="start center">
+                                   <mat-form-field appearance="outline"  *ngIf="trackedItem && trackedItem.value == 'none'">
+                                            <mat-label>COURSE TITLE</mat-label>
+                                            <input matInput formControlName="title">
+                                            
+                                            <mat-error *ngIf="!courseDetailForm.get('title').hasError('required') &&
+                                                        courseDetailForm.get('title').hasError('title')">
+                                                Please enter course title.
+                                            </mat-error>
+                                    </mat-form-field>     
+                                    <mat-form-field appearance="outline" *ngIf="trackedItem && trackedItem.value == 'none'">
+                                        <mat-label>COURSE DESCRIPTION</mat-label>
+                                        <textarea matInput formControlName="description" matTextareaAutosize class="descriptionArea" ></textarea>
+                                        
+                                        <mat-error *ngIf="!courseDetailForm.get('description').hasError('required') &&
+                                                    courseDetailForm.get('description').hasError('description')">
+                                            Please enter course description.
+                                        </mat-error>
+                                    </mat-form-field>  
+
+                                    <div class="jqxDropDownButton">
+                                                <label class="label">Chapters</label>
+                                                <!-- <jqxDropDownButton #myDropDownButton [width]="200" [height]="25"> -->
+                                                    <jqxTree #myTree (onCheckChange)="myTreeOnSelect($event)"
+                                                        [width]="200" [height]="100" [source]="chapterStructure" [hasThreeStates]="true" [checkboxes]="true">
+                                                        
+                                                    </jqxTree>
+                                                <!-- </jqxDropDownButton>-->
+                                    </div>  
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>DURATION IN SECONDS</mat-label>
+                                        <input matInput type="number" formControlName="duration" maxlength="10">
+                                        
+                                        <mat-error>
+                                            Please enter course duration.
+                                        </mat-error>
+                                    </mat-form-field>
+                                     <div class="" style="text-align: right;float: right;width:100%">
+                                                    <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                     [class.spinnerBtn]="showSpinner" (click)="submitCourse($event)">
+                                                      CONTINUE
+                                                    </button> 
+                                     </div>
+                            </div>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="enrolmentForm">
+                            <form [formGroup]="enrolmentForm">
+                            <ng-template matStepLabel></ng-template>               
+                               <div class="row" fxLayout="row" fxLayoutAlign="start start">
+                                      <div  class="chaptersArea" fxLayout="column" fxLayoutAlign="start start">
+                                                                                      
+                                                    <mat-tab-group (selectedTabChange)="selectedTabChange($event)" 
+                                                    (selectedIndexChange)="selectedIndexChange($event)">
+                                                        <mat-tab label="{{chapter.name}}" *ngFor="let chapter of this.selectedChapters"> 
+                                                            <ng-container 
+                                                                *ngTemplateOutlet="usersTemplate;context:ctx">
+                                                            </ng-container>
+                                                        </mat-tab>
+                                                    </mat-tab-group>
+                                                    <div class="" style="text-align: right;float: right;width:100%">
+                                                        <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                        [class.spinnerBtn]="showSpinner" (click)="submitEnroll($event)">
+                                                        SUBMIT
+                                                        </button> 
+                                                    </div>   
+                                            
+                                      </div>
+                                     <!-- <div  class="membersArea" fxLayout="column" fxLayoutAlign="start start">
+                                        <div class="" style="text-align: right;float: right;width:100%">
+                                                    <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                     [class.spinnerBtn]="showSpinner" (click)="submit($event)">
+                                                      SUBMIT
+                                                    </button> 
+                                      </div>   
+                                      </div>-->
+                               </div>                            
+                            </form>
+                        </mat-step>
+                </mat-horizontal-stepper>
+
+                </div>
+                
+                <div class="instruction-con">
+                    <h3>Instruction</h3>
+                    <p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>2. Nullam eu massa sit amet sapien consectetur fringilla.</p>
+                </div>
+             </div>
+    
+        </div>
+    
+    </div>
+    <ng-template #usersTemplate >
+        <div class="user-con" fxLayout="row" fxLayoutAlign="start center">
+             <div class="member" fxLayout="row" fxLayoutAlign="start center" *ngFor="let member of members">
+                  <div class="avatar">
+                      <img src="../../../../../assets/images/avatars/profile.jpg"/>
+                  </div>
+                   <div class="name" fxLayout="row" fxLayoutAlign="start center">
+                       <input type="checkbox" [value]="member._id" (change)="memberSelectHandler($event)"  />
+                       <h5>{{member.user.profile.firstname}} </h5>
+                   </div>
+             </div>
+
+        </div>
+
+        
+
+
+    </ng-template>
+    

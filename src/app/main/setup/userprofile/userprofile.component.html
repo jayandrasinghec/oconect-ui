@@ -1,0 +1,146 @@
+<div id="profile" fxLayout="row">
+
+    <div id="profile-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+          <div id="profile-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">             
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="profileForm">
+                <form [formGroup]="profileForm" >
+                <ng-template matStepLabel>PERSONAL DETAILS</ng-template>
+                 <div class="logo">
+                                <div class="avatar-wrapper">
+                                    <img class="mat-avatar avatar"
+                                    [src]="imgURL" 
+                                    alt="User Photo" (click)="openPopup($event)">
+                                    <mat-label>Choose Photo</mat-label>
+                                    <!--<mat-icon role="img" aria-haspopup="true" class="mat-icon notranslate mat-menu-trigger s-16 status material-icons online mat-icon-no-color" aria-hidden="true"></mat-icon>-->
+                            </div>
+                </div>
+                <div  class="profileFormControl" style="margin-top: 50px;">
+                    <div class="" fxLayout="row" fxlayoutalign="start center">
+                    <div class="left-con">
+                       
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstname">
+                            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                            <mat-error *ngIf="profileForm.get('firstname').hasError('required')">
+                                First name is required
+                            </mat-error>
+                            <mat-error
+                                *ngIf="!profileForm.get('firstname').hasError('required') &&
+                                        profileForm.get('firstname').hasError('email')">
+                                Please enter  First name
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastname">
+                            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                            <mat-error *ngIf="profileForm.get('lastname').hasError('required')">
+                                Last name is required
+                            </mat-error>
+                            <mat-error
+                                *ngIf="!profileForm.get('lastname').hasError('required') &&
+                                        profileForm.get('lastname').hasError('email')">
+                                Please enter   Last name
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>GENDER</mat-label>
+                            <mat-select  required (selectionChange)="ongenderChange($event)"  required>
+                                <mat-option *ngFor="let item of genders" [value]="item">
+                                {{item.label}}
+                                </mat-option>
+                            </mat-select> 
+                        </mat-form-field>
+                        <mat-form-field>
+                                <mat-label>DATE OF BIRTH</mat-label>
+                              <!--  <input matInput [matDatepicker]="picker" (dateChange)="dateChangeEvent( $event)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>-->
+                                <input matInput [matDatepicker]="picker" [max]="maxDate"   (dateChange)="dateChangeEvent($event)"
+                                placeholder=""   
+                                (keyup.enter)="picker.open()">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field> 
+                    </div> 
+                    <div class="divider"></div>
+                    <div class="right-con">
+                        <mat-form-field >
+                        <mat-label>ABOUT ME</mat-label>
+                        <textarea matInput formControlName="about_me"
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="10"
+                                    cdkAutosizeMaxRows="10"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div> 
+                </div> 
+                <div fxLayout="row" fxLayoutAlign="end end">
+                    <!--<button  mat-button matStepperNext>Next</button>-->
+                    <button mat-raised-button  matStepperNext  class="submit-button" color="accent"    
+                    [class.spinnerBtn]="showSpinner">
+                        NEXT
+                    </button>
+                </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="addressForm">
+                <form [formGroup]="addressForm">
+                <ng-template matStepLabel>ADDRESS</ng-template>
+                <div class="addressFormcontrol" fxLayout="column" fxlayoutalign="start center">
+                <!--   <div class="form-group">
+                        <label>Enter address</label>
+                        <input  type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+                   </div>  -->
+                   <mat-form-field appearance="outline">
+                            <mat-label>LOCATION</mat-label>
+                            <input matInput   class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search >
+                            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>                            
+                  </mat-form-field>    
+                  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                        (dragEnd)="markerDragEnd($event)"></agm-marker>
+                  </agm-map> 
+                   <h5>Address: {{address}}</h5>
+                   <div>Latitude: {{latitude}}</div>
+                   <div>Longitude: {{longitude}}</div> 
+
+
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end end">
+                    <button mat-raised-button  class="submit-button" color="accent"   matStepperPrevious>BACK</button>
+                    <button mat-raised-button matStepperNext  class="submit-button" color="accent"  
+                             [class.spinnerBtn]="showSpinner">
+                        NEXT
+                    </button>
+                </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="areasForm">
+                 <form [formGroup]="areasForm">
+                <ng-template matStepLabel>AREAS OF INTEREST</ng-template>               
+                    <div class="areasFromControl" fxLayout="column" fxlayoutalign="start start">
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'music')">MUSIC</mat-checkbox>
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'sports')">SPORTS</mat-checkbox>
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'arts')">ARTS</mat-checkbox>
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'literature')">LITERATURE</mat-checkbox>
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'politics')">POLITICS</mat-checkbox>
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'technology')">TECHNOLOGY</mat-checkbox>
+                        <mat-checkbox (change)="CheckBoxClickHandler($event,'travel')">TRAVEL</mat-checkbox>
+                    </div>                
+                 <div fxLayout="row" fxLayoutAlign="end end">
+                    <button mat-raised-button  class="submit-button" color="accent"   matStepperPrevious>BACK</button>
+                    <button mat-raised-button   class="submit-button" color="accent"  
+                                [class.spinnerBtn]="showSpinner" (click)="submit($event)">
+                            SAVE
+                    </button>
+                </div>
+                </form>
+            </mat-step>
+            </mat-horizontal-stepper>
+            </div>
+</div>
+</div>

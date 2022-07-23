@@ -1,0 +1,111 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+.margin-auto{margin: auto;}
+ @keyframes spinnerBtn {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinnerBtn:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinnerBtn .8s linear infinite;
+}
+.fileupload {
+  background-image: url("./assets/upload-icon.png");
+  background-repeat: no-repeat;
+  background-size: 100px;
+  background-position: center;
+  background-color: #ffffff;
+  height: 150px;
+  width: 100%;
+  cursor: pointer;
+  /* border: 2px dashed #0f68ff; */
+  border-radius: 6px;
+  margin-bottom: 25px;
+  background-position: center 28px;
+}
+
+
+/* main-content */
+.main-page {
+  display: flex;
+}
+.main-content {
+  height: 100vh;
+  width: 100%;
+}
+
+/* button style */
+.blue-button {
+  background-color:#44a5f2;
+}
+
+/* section-title */
+.section-title {
+  h3 {
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1b3a65;
+    margin: 0 0 15px;
+  }
+}
+
+
+/* page-header */
+.page-header {  
+  display: flex;   
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #c7bdbd;
+  padding: 0px 2rem;
+ .add-button-con{
+    border-left: 1px solid #c7bdbd;
+    padding: 0px 10px;
+    margin-left: auto;
+    .add-button{
+      margin: auto;
+      display: block;
+      margin-top: 5px;
+    }
+  }  
+}
+
+/* pagination */
+.pagination {
+  text-align: center;
+  ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      li {                
+          list-style: none;
+          margin-right: 10px;
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 20px;
+          border: 2px solid #4f99df;
+          border-radius: 50%;
+          cursor: pointer;
+          &:last-child {
+              margin-right: 0;
+          }
+      }
+  }
+}

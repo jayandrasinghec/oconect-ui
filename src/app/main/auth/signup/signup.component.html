@@ -1,0 +1,42 @@
+
+<div fxLayout="row">
+
+    <div fxLayout="column" fxLayoutAlign="center center">
+
+        <div [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <!-- <div class="logo">
+                <img src="assets/images/logos/fuse.svg">
+            </div> -->
+
+            <div class="title">SignUp TO YOUR ACCOUNT</div>
+
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+
+                <mat-step>
+                    <ng-template matStepLabel>Add User</ng-template>
+                    <div>
+                        <signup-user *ngIf="userData" [userData]="userData"></signup-user>
+                    </div>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step >
+                        <ng-template matStepLabel>Add User Details</ng-template>
+                        
+
+                        <div>
+                            <signup-userdetails *ngIf="userData" [userData]="userData"></signup-userdetails>
+                        </div>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                        </div>
+                </mat-step>
+
+                </mat-horizontal-stepper>
+        </div>
+
+    </div>
+
+</div>

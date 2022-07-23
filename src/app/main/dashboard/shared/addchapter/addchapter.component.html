@@ -1,0 +1,53 @@
+
+<div id="lock" fxLayout="column">
+
+    <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="lock-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="lock-form-header" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+
+               <!-- <div class="avatar-container">
+                    <img class="avatar big" src="assets/images/avatars/katherine.jpg">                    
+                </div> -->
+
+                <div class="title_head">
+                    <div class="title">ADD CHAPTER</div>
+                    <div class="subtitle"></div>
+                </div>
+
+            </div>
+
+            <form name="lockForm" [formGroup]="chapterForm"  (ngSubmit)="submit($event)" novalidate>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>NAME</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-icon matSuffix class="disabled-text">account_circle</mat-icon>
+                </mat-form-field>
+                <!-- <mat-form-field appearance="outline">
+                    <mat-label>CHAPTER ROLE</mat-label>
+                    <input matInput formControlName="role">
+                    <mat-icon matSuffix class="disabled-text">account_circle</mat-icon>
+                </mat-form-field> -->
+                <!-- <mat-form-field appearance="outline">
+                    <mat-label>REGION / LOCATION</mat-label>
+                    <input matInput formControlName="region">
+                    <mat-icon matSuffix class="disabled-text">account_circle</mat-icon>
+                </mat-form-field> -->
+              <button mat-raised-button class="submit-button" color="accent" aria-label="UNLOCK" [disabled]="chapterForm.invalid" [class.spinnerBtn]="showSpinner">
+                    SAVE
+                </button>
+
+            </form>
+
+            <div class="message">
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

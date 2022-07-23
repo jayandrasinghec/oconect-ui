@@ -1,0 +1,34 @@
+<div class="table-con">
+  <div class="content">
+
+        <mat-tab-group dynamicHeight="true" [selectedIndex]="selectedIndex">
+
+            <mat-tab label="Active">
+                <app-member-list-table class=""
+                (listChanged)="activeMemberlistChange($event)" 
+                [memberType]="'active'"
+                [userlist]="activeUsers"
+                [changedUser]="activeUser"  ></app-member-list-table>
+            </mat-tab>
+
+            <mat-tab label="Non Active">
+                   <app-member-list-table class="" 
+                    (listChanged)="nonactiveMemberlistChange($event)"
+                    [memberType]="'nonactive'"
+                    [chapterId]="chapterId" 
+                    [userlist]="nonactiveUsers"
+                    [changedUser]="nonActiveUser"  ></app-member-list-table>
+            </mat-tab>
+
+            <mat-tab label="Invited ">
+                   <app-member-list-table [memberType]="'invite'"
+                    [userlist]="invitedUsers" 
+                    ></app-member-list-table>
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+</div>
+
+

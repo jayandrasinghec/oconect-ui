@@ -1,0 +1,45 @@
+<div id="training" class="page-layout simple">
+
+    <!-- HEADER -->
+ <!--   <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text">
+            <mat-icon class="hero-icon">school</mat-icon>
+            <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                WELCOME TO ACADEMY
+            </h1>
+            <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                Our courses will step you through the process of building a small application, or adding a new feature
+                to an existing application.
+            </h3>
+        </div>
+    </div>-->
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24" style="position: relative">
+         
+         <mat-tab-group dynamicHeight="true">
+
+            <mat-tab label="FAQ">
+                 <app-faq ></app-faq>
+            </mat-tab>
+
+            <mat-tab label="VIDEOS" >
+                 <app-video  [isCoOrdinator]="isCoOrdinator"  [chapter]="chapter"></app-video>
+            </mat-tab>
+
+            <mat-tab label="ARTICLES">
+                  <app-articles ></app-articles>
+            </mat-tab>
+
+        </mat-tab-group>
+        
+
+
+       
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

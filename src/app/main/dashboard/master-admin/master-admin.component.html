@@ -1,0 +1,417 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!fuseConfig.layout.sidepanel.hidden && fuseConfig.layout.sidepanel.position === 'left'"></ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container main-page">
+        <!-- NAVBAR: Left -->
+        <ng-container *ngIf="fuseConfig.layout.navbar.position === 'left'">
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="main-content container" fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+            <!-- TOOLBAR: Below fixed -->
+           <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container> 
+            <!-- / TOOLBAR: Below fixed -->
+
+            <div id="container-3" class="container">
+
+                <!-- TOOLBAR: Below static -->
+                <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container> 
+                <!-- / TOOLBAR: Below static -->
+
+                <!-- CONTENT -->
+                <div fxlayout="row" fxlayoutalign="center center" class="page-header ng-tns-c254-55 " >
+                    <div class="font-size-24 font-weight-700">Master Admin Dashboard</div>
+                    <div class="add-button-con">
+                        <button mat-fab class="add-button blue-button" aria-label="Add file">
+                                <mat-icon>add</mat-icon>                                        
+                        </button>   
+                        <label class="font-size-16 font-weight-700">Invite Member</label>
+                    </div>
+                </div>
+
+                <div class="master-admin-de">
+                    <!-- <div class="pick-top-container">
+                        <div class="section-title">
+                            <h3 class="font-size-22">Top Picks</h3>
+                        </div>
+                        <div class="top-pick-list" fxLayout="row wrap" fxLayoutAlign="space-around start">
+                            <div class="picks-thumbs" fxLayout="row">
+                                <div class="media">
+                                    <img src="./../../../../assets/images/avatars/Estes.jpg" alt="" />
+                                </div>
+                                <div class="desc">
+                                    <p class="font-size-14">Estes</p>
+                                    <p class="font-size-18 blue-text">Australia</p>
+                                    <p class="font-size-12">Chapter 1</p>
+                                    <p class="font-size-22">D+</p>
+                                    <ul class="stars">
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="picks-thumbs" fxLayout="row">
+                                <div class="media">
+                                    <img src="./../../../../assets/images/avatars/garry.jpg" alt="" />
+                                </div>
+                                <div class="desc">
+                                    <p class="font-size-14">Garry</p>
+                                    <p class="font-size-18 blue-text">ENGLAND</p>
+                                    <p class="font-size-12">Chapter 2</p>
+                                    <p class="font-size-22">A+</p>
+                                    <ul class="stars">
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="picks-thumbs" fxLayout="row">
+                                <div class="media">
+                                    <img src="./../../../../assets/images/avatars/Harper.jpg" alt="" />
+                                </div>
+                                <div class="desc">
+                                    <p class="font-size-14">Harper</p>
+                                    <p class="font-size-18 blue-text">China</p>
+                                    <p class="font-size-12">Chapter 3</p>
+                                    <p class="font-size-22">C+</p>
+                                    <ul class="stars">
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="picks-thumbs" fxLayout="row">
+                                <div class="media">
+                                    <img src="./../../../../assets/images/avatars/Henderson.jpg" alt="" />
+                                </div>
+                                <div class="desc">
+                                    <p class="font-size-14">Henderson</p>
+                                    <p class="font-size-18 blue-text">India</p>
+                                    <p class="font-size-12">Chapter 4</p>
+                                    <p class="font-size-22">B+</p>
+                                    <ul class="stars">
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                        <li><mat-icon _ngcontent-hrp-c225="" role="img" class="mat-icon notranslate s-20 material-icons" aria-hidden="true">star</mat-icon></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="timeline-item">
+
+                        <header fxLayout="row" fxLayoutAlign="space-between start">
+                            <div class="user" fxLayout="row" fxLayoutAlign="start center">
+                                <img class="avatar" >
+            
+                                <div fxLayout="column">
+                                    <div class="title">
+                                        <span class="username">aaaa</span>
+                                        <span>posted on your timeline</span>
+                                        <span>shared something with you</span>
+                                        <span>shared a video with you</span>
+                                        <span>shared an article with you</span>
+                                    </div>
+                                    <div class="time">dfdsf</div>
+                                </div>
+                            </div>
+            
+                            <button mat-icon-button aria-label="More">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </header>
+                    </div> -->
+                    <div class="pick-buttom-container">          
+                        <div class="pick-buttom-list" fxLayout="row wrap" fxLayoutAlign="space-around start">
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">China</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           15
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           32
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            40
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">Australia</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            23
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           18
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            30
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">	Hungary</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            14
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           40
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            60
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">Iceland</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            25
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           50
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            70
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pick-buttom-list" fxLayout="row wrap" fxLayoutAlign="space-around start">
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">China</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           15
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           32
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            40
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">Australia</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            23
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           18
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            30
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">	Hungary</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            14
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           40
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            60
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fuse-card auto-width mb-32 textalignCenter text-center" [ngClass.gt-sm]="'mb-0'">
+                                <div class="p-16 w-100-p" fxLayout="row wrap" fxLayoutAlign="start end">
+                                    <div class="w-100-p">
+                                        <div class="font-size-26 font-weight-300 line-height-1 mt-8 mb-16">Iceland</div>
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            25
+                                        </div>
+                                        <div class="h3 font-size-14">REGION</div>
+                                        
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                           50
+                                        </div>
+                                        <div class="h3 font-size-14">ACTIVITY</div>                                   
+                                    </div>
+                                    <div class="w-100-p">
+                                        <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                            70
+                                        </div>
+                                        <div class="h3 font-size-14">MEMBERS</div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="pagination">
+                            <ul>
+                                <li><span>1</span></li>
+                                <li><span>2</span></li>
+                                <li><span>3</span></li>
+                                <li><span>4</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- FOOTER: Below static -->
+               <ng-container *ngIf="fuseConfig.layout.footer.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container> 
+                <!-- / FOOTER: Below static -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!fuseConfig.layout.sidepanel.hidden && fuseConfig.layout.sidepanel.position === 'right'"></ng-container>
+
+<!-- PANEL CONTENT -->
+
+<!-- / SIDE PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS                                                                                            -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!fuseConfig.layout.toolbar.hidden"
+             [ngClass]="fuseConfig.layout.toolbar.customBackgroundColor === true ? fuseConfig.layout.toolbar.position + ' ' + fuseConfig.layout.toolbar.background : fuseConfig.layout.toolbar.position">
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <fuse-sidebar name="navbar" class="navbar-fuse-sidebar"
+        [folded]="fuseConfig.layout.navbar.folded"
+        [folded]="true"
+        [foldedAutoTriggerOnHover]="false"
+        lockedOpen="gt-md"
+        *ngIf="!fuseConfig.layout.navbar.hidden">
+        <navbar [variant]="fuseConfig.layout.navbar.variant" class="left-navbar"></navbar>
+        
+    </fuse-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+ 

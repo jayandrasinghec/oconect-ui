@@ -1,0 +1,221 @@
+<div class="main-menu-wrapper">
+
+    <div fxLayout="column" fxLayoutAlign="start"
+                 fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start">
+                    
+                     <div class="widget" fxFlex="100" fxFlex.gt-sm="33" (click)="itemClickhandler($event,'training')">
+                            <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'"  >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="pb-40 w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">TRAINING</div>                                                                     
+                                                            </div>
+                                                            <div class="pb-30 pb-10 pr-40 pl-40  w-100-p">
+                                                                <div class="h3 secondary-text">
+                                                                  <mat-progress-bar mode="determinate"
+                                                                   class="progress-bar"
+                                                                     [color]="'primary'"
+                                                                    value="40"></mat-progress-bar>    
+                                                                </div>
+                                                                <div class="font-size-16 font-weight-700 line-height-1 mt-8 light-blue-fg">
+                                                                  COMPLETED 20 OUT OF 50
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="pr-16 w-100-p">
+                                                                <div class="h3 secondary-text"></div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg" style="height: 200px;width:200px;margin: auto;position: relative ">
+                                                                    <div class="font-size-30 font-weight-700 line-height-1 mt-8 light-blue-fg score-label">50%</div>
+                                                                     <ngx-charts-pie-chart
+                                                                        *fuseIfOnDom
+                                                                        [scheme]="widgets.scheme"
+                                                                        [results]="widgets.devices"
+                                                                        [doughnut]="true">
+                                                                    </ngx-charts-pie-chart>
+                                                                </div>
+                                                            </div>
+                                                                                                                          
+                                                        </div>
+                                                         
+
+                       </div>   
+           </div>
+            <div class="widget" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'"  >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="pb-40 w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">ACTIVITY</div>                                                                     
+                                                            </div>
+                                                            <div class="pb-30 pb-10 pr-40 pl-40  w-100-p">
+                                                                <div class="h3 secondary-text">
+                                                                  <mat-progress-bar mode="determinate"
+                                                                   class="progress-bar"
+                                                                     [color]="'primary'"
+                                                                    value="40"></mat-progress-bar>    
+                                                                </div>
+                                                                <div class="font-size-16 font-weight-700 line-height-1 mt-8 light-blue-fg">
+                                                                  COMPLETED 20 OUT OF 50
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="pr-16 w-100-p">
+                                                                <div class="h3 secondary-text"></div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg" style="height: 200px;width:200px;margin: auto;position: relative ">
+                                                                    <div class="font-size-30 font-weight-700 line-height-1 mt-8 light-blue-fg score-label">50%</div>
+                                                                     <ngx-charts-pie-chart
+                                                                        *fuseIfOnDom
+                                                                        [scheme]="widgets.scheme"
+                                                                        [results]="widgets.devices"
+                                                                        [doughnut]="true">
+                                                                    </ngx-charts-pie-chart>
+                                                                </div>
+                                                            </div>
+                                                                                                                          
+                                                        </div>
+                                                         
+
+                       </div>   
+           </div>
+            <div class="widget" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'"  >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="pb-40 w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">EVENT</div>                                                                     
+                                                            </div>
+                                                            <div class="pb-30 pb-10 pr-40 pl-40  w-100-p">
+                                                                <div class="h3 secondary-text">
+                                                                  <mat-progress-bar mode="determinate"
+                                                                   class="progress-bar"
+                                                                     [color]="'primary'"
+                                                                    value="40"></mat-progress-bar>    
+                                                                </div>
+                                                                <div class="font-size-16 font-weight-700 line-height-1 mt-8 light-blue-fg">
+                                                                  COMPLETED 20 OUT OF 50
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="pr-16 w-100-p">
+                                                                <div class="h3 secondary-text"></div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg" style="height: 200px;width:200px;margin: auto;position: relative ">
+                                                                    <div class="font-size-30 font-weight-700 line-height-1 mt-8 light-blue-fg score-label">50%</div>
+                                                                     <ngx-charts-pie-chart
+                                                                        *fuseIfOnDom
+                                                                        [scheme]="widgets.scheme"
+                                                                        [results]="widgets.devices"
+                                                                        [doughnut]="true">
+                                                                    </ngx-charts-pie-chart>
+                                                                </div>
+                                                            </div>
+                                                                                                                          
+                                                        </div>
+                                                         
+
+                       </div>   
+           </div>
+
+           
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start"
+                 fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start">
+                    
+                     <div class="widget" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'"  >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="pb-40 w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">PROJECTS</div>                                                                     
+                                                            </div>
+                                                            <div class="pb-30 pb-10 pr-40 pl-40  w-100-p">
+                                                                <div class="h3 secondary-text">
+                                                                  <mat-progress-bar mode="determinate"
+                                                                   class="progress-bar"
+                                                                     [color]="'primary'"
+                                                                    value="40"></mat-progress-bar>    
+                                                                </div>
+                                                                <div class="font-size-16 font-weight-700 line-height-1 mt-8 light-blue-fg">
+                                                                  COMPLETED 20 OUT OF 50
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="pr-16 w-100-p">
+                                                                <div class="h3 secondary-text"></div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg" style="height: 200px;width:200px;margin: auto;position: relative ">
+                                                                    <div class="font-size-30 font-weight-700 line-height-1 mt-8 light-blue-fg score-label">50%</div>
+                                                                     <ngx-charts-pie-chart
+                                                                        *fuseIfOnDom
+                                                                        [scheme]="widgets.scheme"
+                                                                        [results]="widgets.devices"
+                                                                        [doughnut]="true">
+                                                                    </ngx-charts-pie-chart>
+                                                                </div>
+                                                            </div>
+                                                                                                                          
+                                                        </div>
+                                                         
+
+                       </div>   
+           </div>
+             <div class="widget" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'"  >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="pb-40 w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">CALENDER</div>                                                                     
+                                                            </div>
+                                                            <div class="pb-30 pb-10 pr-40 pl-40  w-100-p">
+                                                                <div class="h3 secondary-text">
+                                                                  <mat-progress-bar mode="determinate"
+                                                                   class="progress-bar"
+                                                                     [color]="'primary'"
+                                                                    value="40"></mat-progress-bar>    
+                                                                </div>
+                                                                <div class="font-size-16 font-weight-700 line-height-1 mt-8 light-blue-fg">
+                                                                  COMPLETED 20 OUT OF 50
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="pr-16 w-100-p">
+                                                                <div class="h3 secondary-text"></div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg" style="height: 200px;width:200px;margin: auto;position: relative ">
+                                                                    <img src="../../../../../../assets/images/calendar/calender.png"/>
+                                                                </div>
+                                                            </div>
+                                                                                                                          
+                                                        </div>
+                                                         
+
+                       </div>   
+           </div>
+             <div class="widget" fxFlex="100" fxFlex.gt-sm="33">
+                            <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'"  >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="pb-40 w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">GRADE BOOK</div>                                                                     
+                                                            </div>
+                                                            <div class="pb-30 pb-10 pr-40 pl-40  w-100-p">
+                                                                <div class="h3 secondary-text">
+                                                                  <mat-progress-bar mode="determinate"
+                                                                   class="progress-bar"
+                                                                     [color]="'primary'"
+                                                                    value="40"></mat-progress-bar>    
+                                                                </div>
+                                                                <div class="font-size-16 font-weight-700 line-height-1 mt-8 light-blue-fg">
+                                                                  COMPLETED 20 OUT OF 50
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="pr-16 w-100-p">
+                                                                <div class="h3 secondary-text"></div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg" style="height: 200px;width:200px;margin: auto;position: relative ">
+                                                                       <img src="../../../../../../assets/images/others/gradebook.png"/>
+                                                                </div>
+                                                            </div>
+                                                                                                                          
+                                                        </div>
+                                                         
+
+                       </div>   
+           </div>
+
+           
+    </div>
+   
+</div>

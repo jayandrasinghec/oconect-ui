@@ -1,0 +1,105 @@
+@import "src/@fuse/scss/fuse";
+
+ 
+
+#knowledgebase {
+
+    .header {
+        flex: 1 0 auto;
+      /*  height: 280px;*/
+        max-height: 280px;
+        background: #005571;
+        background: linear-gradient(to right, #005571 0%, #005571 100%);
+
+        @include media-breakpoint('xs') {
+            height: 240px;
+            padding: 16px;
+        }
+
+        .hero-text {
+            text-align: center;
+            h1 {
+                color: white;
+                font-size: 48px;
+                font-weight: 400;
+                letter-spacing: 0.01em;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 16px;
+
+                @include media-breakpoint('xs') {
+                    font-size: 24px;
+                }
+            }
+
+            h3 {
+                color: rgba(255, 255, 255, 0.75);
+                max-width: 480px;
+                text-align: center;
+                font-weight: 300;
+                letter-spacing: 0.075em;
+                margin: 0;
+
+                @include media-breakpoint('xs') {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .content {
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+        .article-con{
+           /* width: 400px;
+            min-width: 400px;*/
+            margin: 16px;
+            padding: 16px;
+            border-radius: 4px;
+            box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+            background: white;
+            h1{
+              margin: 10px 10px;   
+            }
+            .article{
+                padding: 10px;
+                a{
+                    font-size: 14pt;
+                    text-decoration: none;
+                    color:#005571;
+                }
+            }
+        }
+        .articles-list {
+            width: 400px;
+            min-width: 400px;
+            margin: 16px;
+            padding: 16px;
+            border-radius: 4px;
+            @include mat-elevation(1);
+
+            @include media-breakpoint('xs') {
+                min-width: 300px;
+                margin: 16px 0;
+            }
+
+            .mat-list-item {
+                text-decoration: none !important;
+                display: block;
+                height: 48px;
+                -webkit-tap-highlight-color: transparent;
+                width: 100%;
+                padding: 0;
+                cursor: pointer;
+                outline: none;
+            }
+
+            .see-all-link {
+                font-size: 14px;
+            }
+            }
+          }
+        }
+
+ 

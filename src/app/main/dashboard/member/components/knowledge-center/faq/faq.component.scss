@@ -1,0 +1,69 @@
+@import "src/@fuse/scss/fuse";
+
+app-faq {
+
+    .header {
+        flex: 1 0 auto;
+       /* height: 250px;*/
+        max-height: 360px;
+        background: #005571;
+        background: linear-gradient(to right, #005571 0%, #005571 100%);
+
+        @include media-breakpoint('xs') {
+            height: 240px;
+            padding: 16px;
+        }
+
+        .hero-text {
+
+            h1 {
+                color: white;
+                font-size: 48px;
+                font-weight: 400;
+                letter-spacing: 0.01em;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 16px;
+
+                @include media-breakpoint('xs') {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 640px;
+            height: 56px;
+            line-height: 56px;
+            padding: 18px;
+            border-radius: 28px;
+            overflow: hidden;
+
+            .search {
+                background: white;
+                width: 100%;
+                border-radius: 26px;
+                overflow: hidden;
+                margin-right: 10px;
+                input {
+                    height: 56px;
+                    padding-left: 16px;
+                    border: none;
+                    outline: none;
+                }
+                .icon {
+                    color: gray;
+                    margin-left: 10px;
+                }
+            }
+
+        }
+    }
+
+    .content {
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}

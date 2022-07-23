@@ -1,0 +1,60 @@
+
+<div id="lock" fxLayout="column">
+
+    <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="lock-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="lock-form-header" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+
+               <!-- <div class="avatar-container">
+                    <img class="avatar big" src="assets/images/avatars/katherine.jpg">                    
+                </div> -->
+
+                <div class="title_head">
+                    <div class="title">SETUP ORGANISATION</div>
+                    <div class="subtitle"></div>
+                </div>
+
+            </div>
+
+            <form name="orgForm" [formGroup]="orgForm"  novalidate>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>NAME</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-icon matSuffix class="disabled-text">account_circle</mat-icon>
+                </mat-form-field>
+
+                <div >
+                    <mat-label>LOGO</mat-label>                     
+                    <button mat-fab
+                            class="add-file-button blue-button"
+                            (click)="openDialog($event)"
+                            aria-label="Add file"
+                            [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                    <div class="logo">
+                        <img class="mat-avatar avatar" *ngIf="imgURL" [src]="imgURL">
+                    </div>
+                </div>
+                <div >
+                    <button mat-raised-button type="submit" class="submit-button" color="accent" aria-label="UNLOCK" [disabled]="orgForm.invalid"
+                    [class.spinnerBtn]="showSpinner"  (click)="submit($event)">
+                        SAVE
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="message">
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

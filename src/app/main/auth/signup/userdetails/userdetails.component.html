@@ -1,0 +1,34 @@
+<form [formGroup]="userDetailsForm" novalidate>
+    <ng-template matStepLabel>Fill out basic details</ng-template>
+    
+    
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Firstname</mat-label>
+            <input matInput formControlName="firstname">
+
+
+            <mat-error *ngFor="let validation of validation_messages.firstname">
+                <mat-error class="error-message" *ngIf="userDetailsForm.get('firstname').hasError(validation.type) && (userDetailsForm.get('firstname').dirty || userDetailsForm.get('firstname').touched)">
+                    {{validation.message}}
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Lastname</mat-label>
+            <input matInput formControlName="lastname">
+
+
+            <mat-error *ngFor="let validation of validation_messages.lastname">
+                <mat-error class="error-message" *ngIf="userDetailsForm.get('lastname').hasError(validation.type) && (userDetailsForm.get('lastname').dirty || userDetailsForm.get('lastname').touched)">
+                    {{validation.message}}
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+</form>

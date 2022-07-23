@@ -1,0 +1,73 @@
+ <div id="courses" fxLayout="column" fxLayoutAlign="center">
+             <div class="button-con" *ngIf="isCoOrdinator" >
+                       <div class="add-button-con">
+                            <button mat-fab class="add-button blue-button" (click)="addCourse($event)" aria-label="Add Course">
+                                    <mat-icon>add</mat-icon>                                        
+                            </button>   
+                            <label class="btnlabel font-size-16 font-weight-700">Add Course</label>
+                        </div>
+             </div>  
+            <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+                
+              <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="s-16 secondary-text">search</mat-icon>
+                        <input [(ngModel)]="searchTerm"  (input)="filterCoursesByTerm()" type="text" placeholder="Search " fxFlex>
+                    </div>
+                </div>
+                 
+
+            </div>
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50"
+                     fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}" (click)="launchCourse(course)">
+
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+                        <div class="header" fxLayout="row" fxLayoutAlign="center center"
+                             [ngClass]="course.category + '-bg'">
+                            <div class="category" fxFlex>
+                                {{course.displayTitle}}
+                            </div>  
+                            <div class="icon-con">
+                             <!--   <mat-icon class="s-36 secondary-text" *ngIf="status == 'notstarted'" >fiber_manual_record</mat-icon>--> <!--Not started-->  
+                              <!--     <mat-icon class="s-36 secondary-text" *ngIf="status == 'started'">timelapse</mat-icon>-->  <!--  started not completed-->  
+                              <!--     <mat-icon class="s-36 secondary-text" *ngIf="status == 'completed'">check_circle_outline</mat-icon>-->  <!--Completed--> 
+                            </div>
+                       </div>
+                       <div class="progress">
+                               <mat-progress-bar mode="determinate"
+                                class="progress-bar"
+                                [color]="progress_color"
+                                value="40"></mat-progress-bar>    
+                        </div>
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">                            
+                            <div class="updated">   {{course.displayDescription}} </div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+                            <div class="length" fxLayout="row" fxLayoutAlign="center center">
+                                <mat-icon class="length-icon s-20">access_time</mat-icon>
+                                <div class="min">{{course.length}} min</div>
+                            </div>
+
+                            <button mat-button color="accent" class="start-btn"
+                                    [routerLink]="'/apps/academy/courses/' + course.id + '/' + course.slug">
+                                START
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="no-courses" *ngIf="filteredCourses.length === 0">
+                    No courses found!
+                </div>
+
+            </div>
+
+        </div>

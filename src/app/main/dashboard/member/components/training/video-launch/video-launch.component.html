@@ -1,0 +1,91 @@
+<div style="width:100%;">
+    <div class="app-container">
+        <div class="other-screen">
+            <div class="other-screen-inner" fxLayout="row" fxLayoutAlign="start start">
+                <div class="left-content"   fxLayout="coloumn" fxLayoutAlign="start start">
+                    <div class="video-thumb">
+                        
+                        <video width="100%" height="300px" controls
+                        [src]="videoUrl"></video>                       
+                        <div class="title_desc_con" fxLayout="column" fxLayoutAlign="start start">
+                            <div class="video-length" fxLayout="row" fxLayoutAlign="center center">
+                                <mat-icon class="length-icon s-20">access_time</mat-icon>
+                                <div class="min">2 min</div>
+                            </div>
+                            <div class="heading">
+                                <h1>{{this.title}}</h1>
+                                <p>{{this.description}}</p>
+                            </div>                            
+                        </div>
+   <!--                     <div class="comment_con">
+                            <h3>COMMENTS</h3>
+                            <div class="comment" fxLayout="row" fxLayoutAlign="start start">
+                                <div class="icon">
+                                     <img src="../../../../../../../assets/images/avatars/profile.jpg"/>
+                                </div>
+                                <div class="desc">
+                                     <mat-form-field appearance="outline">
+                                        <mat-label>Add a coment</mat-label>
+                                        <textarea matInput name="" id="" cols="30" rows="5" [(ngModel)]="comment"></textarea>
+                                     </mat-form-field>
+                                      <div class="" style="text-align: right;float: right;width:100%">
+                                                    
+                                                    <button mat-raised-button type="button"  class="submit-button" color="accent" aria-label="UNLOCK" 
+                                                     [class.spinnerBtn]="showSpinner" (click)="addComent($event)">
+                                                      COMMENT
+                                                    </button> 
+                                     </div>
+                                       <div class="" style="width:100%">
+                                            <div class="posted_comment" *ngFor="let comment of arrComments" fxLayout="row" fxLayoutAlign="start start">
+                                                   <div class="icon" style="width: 50px;height: 50px;">
+                                                        <img  style="width: 50px;height: 50px;" src="../../../../../../../assets/images/avatars/profile.jpg"/>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <h4>{{comment}}</h4>
+                                                    </div>
+                                            </div>
+                                       </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>-->
+                    </div>                    
+                </div>
+                <div class="right-content"  >
+                        <h1 class="right-header">Related Videos</h1>
+                        <div id="container-2" class="main-content container" fusePerfectScrollbar
+                        [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+                        
+                        <div class="video-thumbnail-con" *ngFor="let recentVideo of recentVideos" fxLayout="column wrap"
+                         fxLayoutAlign="start start" fxFlex="100"  [ngClass]="recentVideo.category">
+
+                            <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+
+                                <div class="header" fxLayout="row" fxLayoutAlign="center center"
+                                    [ngClass]="recentVideo.category + '-bg'">
+                                    <div class="category" fxFlex>
+                                        {{recentVideo.category}}
+                                    </div> 
+                                </div>
+                                <div class="thumbnail" fxLayout="column" fxLayoutAlign="start start" fxFlex="1 1 auto" (click)="handleVideoClick(recentVideo)">
+                                    <div class="thumbnail-con">
+                                        <img [src]="recentVideo.thumbnail.url"/>
+                                    </div>  
+                                    <div class="description-con">
+                                         <h3>{{recentVideo.title}}</h3>
+                                         <h5>{{recentVideo.description}}</h5>
+                                    </div>                                    
+                                </div>
+
+                            </div>                       
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

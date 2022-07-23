@@ -1,0 +1,128 @@
+<!-- filemanagement-section start -->
+<div class="filemanagement-section">
+
+    <div class="filemanagement-inner">
+        <div class="file-sidebar">
+            <jqxExpander [width]="300" [height]="400" [showArrow]="false" [toggleMode]="'none'">
+                <h2>File Management</h2>
+                <div class="file-sidebar-list" style="overflow: hidden;">
+                    <jqxTree #treeReference (onSelect)="myTreeOnSelect($event)" [width]="'100%'" [height]="'100%'" [source]="chapterStructure">
+                    </jqxTree>
+                </div>
+            </jqxExpander>
+        </div>
+        <div class="file-content">
+
+
+            <div class="section-header">
+                <div class="heading">
+                    <h2>File</h2>
+                    <div class="switch-btn">
+                            <div class="gridview-btn" *ngIf="showGridBtn">
+                                <button mat-fab (click)="switchView($event, false)" [ngClass]="!isGridView ? 'active' : '' " aria-label="Add Video">
+                                    <mat-icon>view_list</mat-icon>
+                                    <!-- <mat-icon  *ngIf="!isGridView"  >grid_on </mat-icon>                                          -->
+                                </button><!-- 
+                                <label class="btnlabel font-size-16 font-weight-700">List View</label> -->
+                                <!-- <label class="btnlabel font-size-16 font-weight-700" *ngIf="!isGridView">Grid View</label>   -->
+                            </div>
+                            <div class="gridview-btn" *ngIf="showGridBtn">
+                                <button mat-fab (click)="switchView($event, true)" [ngClass]="isGridView ? 'active' : '' " aria-label="Add Video">
+                                    <!-- <mat-icon  *ngIf="isGridView"  >view_list</mat-icon>   -->
+                                    <mat-icon>grid_on </mat-icon>
+                                </button>
+                                <!-- <label class="btnlabel font-size-16 font-weight-700" *ngIf="isGridView">List View</label> -->
+                                <!-- <label class="btnlabel font-size-16 font-weight-700">Grid View</label> -->
+                            </div>
+                        </div>
+                </div>
+                <div class="button-con" *ngIf="isCoOrdinator">
+                    <div class="add-button-con ">
+                        <button mat-fab class="add-button blue-button" (click)="addVideo($event)" aria-label="Add Video">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <label class="btnlabel font-size-16 font-weight-700">Add Video</label>
+                    </div>
+                    <div class="add-button-con ">
+                        <button mat-fab class="add-button blue-button" (click)="addDocument($event)" aria-label="Add Video">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <label class="btnlabel font-size-16 font-weight-700">Add Document</label>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="file-lists" *ngIf="isGridView">
+                <div class="file-list" *ngFor="let item of fileStructure" (click)="fileClickHandler($event, item)">
+                    <img [src]=item.icon />
+                    <p style="word-wrap: break-word;">{{item.label}}</p>
+                </div>
+            </div>
+            <div class="file-lists" *ngIf="!isGridView">
+                <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                    <mat-table #table [dataSource]="fileStructure" [@animateStagger]="{value:'50'}">
+
+                        <!-- Type Column -->
+                        <ng-container matColumnDef="icon">
+                            <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="64px">
+                                <img width="30px" height="30px" [src]="row.icon" />
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.label}}</mat-cell>
+                        </ng-container>
+
+                        <!-- Type Column -->
+                        <ng-container matColumnDef="type">
+                            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Type</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxHide fxShow.gt-md> {{row.type}}</mat-cell>
+                        </ng-container>
+
+                        <!-- Modified Column -->
+                        <ng-container matColumnDef="modified">
+                            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Updated Date</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxHide fxShow.gt-md>{{getDate_Time(row.updatedAt)}}</mat-cell>
+                        </ng-container>
+
+                        <!-- Detail Button Column -->
+                        <ng-container matColumnDef="detail-button">
+                            <mat-header-cell *matHeaderCellDef fxFlex="48px">View</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="48px">
+                                <button mat-icon-button class="sidebar-toggle" (click)="fileClickHandler($event,row)">
+                                    <mat-icon class="secondary-text">visibility</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="edit-button">
+                            <mat-header-cell *matHeaderCellDef fxFlex="100px">Edit</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="100px">
+                                <button mat-icon-button class="sidebar-toggle" (click)="editClickHandler($event,row)">
+                                    <mat-icon class="secondary-text">edit</mat-icon>
+                                </button>
+                                <button mat-icon-button class="sidebar-toggle" (click)="deleteClickHandler($event,row)">
+                                    <mat-icon class="secondary-text">delete_forever</mat-icon>
+                                </button>
+
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)" [ngClass]="{'selected' : row == selected}"
+                            [@animate]="{value:'*',params:{y:'100%'}}">
+                        </mat-row>
+                    </mat-table>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

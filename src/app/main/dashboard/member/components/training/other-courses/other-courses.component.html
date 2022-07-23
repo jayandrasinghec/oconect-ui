@@ -1,0 +1,74 @@
+ <div id="othercourses" fxLayout="column" fxLayoutAlign="center">
+             <div class="button-con" *ngIf="isCoOrdinator" >
+                       <div class="add-button-con">
+                            <button mat-fab class="add-button blue-button" (click)="addMaterial($event)" aria-label="Add Course">
+                                    <mat-icon>add</mat-icon>                                        
+                            </button>   
+                            <label class="btnlabel font-size-16 font-weight-700">Add</label>
+                        </div>
+             </div> 
+            <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+               <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="s-16 secondary-text">search</mat-icon>
+                        <input [(ngModel)]="searchTerm" type="text" placeholder="Search " fxFlex>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                <mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+
+                        <!-- Type Column -->
+                        <ng-container matColumnDef="icon">
+                            <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="64px">
+                                <mat-icon class="type-icon" [ngClass]="row.type">{{getIcon(row.entity.type)}}</mat-icon>
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.entity.file.filename}}</mat-cell>
+                        </ng-container>
+
+                        <!-- Type Column -->
+                        <ng-container matColumnDef="type">
+                            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Type</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxHide fxShow.gt-md> {{row.entity.type}}</mat-cell>
+                        </ng-container>                        
+
+                        <!-- Modified Column -->
+                        <ng-container matColumnDef="modified">
+                            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Upated Date</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxHide fxShow.gt-md>{{getDate_Time(row.updatedAt)}}</mat-cell>
+                        </ng-container>
+
+                        <!-- Detail Button Column -->
+                        <ng-container matColumnDef="detail-button">
+                            <mat-header-cell *matHeaderCellDef fxFlex="48px" >View</mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="48px" >
+                                <button mat-icon-button class="sidebar-toggle" 
+                                        (click)="videDocument(row.entity.file.url)">
+                                    <mat-icon class="secondary-text">visibility</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                                (click)="onSelect(row)"
+                                [ngClass]="{'selected' : row == selected}"
+                                [@animate]="{value:'*',params:{y:'100%'}}"
+                        >
+                        </mat-row>
+                </mat-table>
+
+
+            </div>
+
+        </div>

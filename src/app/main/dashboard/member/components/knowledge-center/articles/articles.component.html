@@ -1,0 +1,50 @@
+<div id="knowledgebase" class="page-layout simple full-width">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text mb-32">           
+            <h1>Welcome to Articles</h1>
+             <h3>How can we help?</h3>
+             <button mat-fab class="add-button blue-button" (click)="openDialog($event)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div class="article-con">
+            <h1>Articles</h1>
+            <div *ngFor="let article of articles" class="article">
+                <a class="mat-list-item"
+                   (click)="readArticle(article)">
+                    <mat-icon class="hint-text mr-8">insert_drive_file</mat-icon>
+                    {{ article.title }}
+                </a>
+            </div>
+            <!--mat-nav-list class="articles-list" *ngFor="let category of articles">
+
+                <h3 mat-subheader>{{category.title}}</h3>
+
+                <a mat-list-item class="mat-list-item" *ngFor="let article of category.featuredArticles"
+                   (click)="readArticle(article)">
+                    <mat-icon class="hint-text mr-8">insert_drive_file</mat-icon>
+                    {{ article.title }}
+                </a>
+
+                <a mat-list-item class="see-all-link accent-fg" [routerLink]="category.path">
+                    See all articles ({{category.articlesCount}})
+                </a>
+
+            </mat-nav-list-->
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

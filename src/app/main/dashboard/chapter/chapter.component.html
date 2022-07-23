@@ -1,0 +1,189 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!fuseConfig.layout.sidepanel.hidden && fuseConfig.layout.sidepanel.position === 'left'"></ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container main-page">
+
+        <!-- NAVBAR: Left -->
+        <ng-container *ngIf="fuseConfig.layout.navbar.position === 'left'">
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="main-content container" fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+            <!-- TOOLBAR: Below fixed -->
+           <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container> 
+            <!-- / TOOLBAR: Below fixed -->
+
+            <div id="container-3" class="container">
+
+                <!-- TOOLBAR: Below static -->
+                <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container> 
+                <!-- / TOOLBAR: Below static -->
+
+                <!-- CONTENT -->   
+                <div fxlayout="row" fxlayoutalign="space-between center" class="header ng-tns-c254-55 dashboard-header" 
+                 >
+                                
+                <button mat-icon-button="" class="mr-0 mr-sm-16 ng-tns-c254-55 mat-icon-button mat-button-base" (click)="backButtonClickHandler($event)"
+                    *ngIf="isAdmin">
+                    <span class="mat-button-wrapper">
+                         <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true">arrow_back </mat-icon>
+                    </span>
+                    <div matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></div>
+                    <div class="mat-button-focus-overlay"></div>
+                </button>
+                <span *ngIf="!isAdmin"></span>   
+                <span class="font-size-30 font-weight-700">{{chapterName}}</span>
+                <div class="" >
+                        <div class="add-button-con border-l-r">
+                            <button mat-fab class="add-button blue-button" (click)="openDialog($event)" aria-label="Add file">
+                                    <mat-icon>add</mat-icon>                                        
+                            </button>   
+                            <label class="font-size-16 font-weight-700">Add Chapter</label>
+                        </div>                        
+                        <div class="add-button-con border-l-r">
+                            <button mat-fab class="add-button blue-button" (click)="inviteMember($event)" aria-label="Add file">
+                                    <mat-icon>add</mat-icon>                                        
+                            </button>   
+                            <label class="font-size-16 font-weight-700">Invite member</label>
+                        </div>
+                        <div class="add-button-con">
+                            <button mat-fab class="add-button blue-button" (click)="addMember($event)" aria-label="Add file">
+                                    <mat-icon>add</mat-icon>                                        
+                            </button>   
+                            <label class="font-size-16 font-weight-700">Add member</label>
+                        </div>
+                </div>
+                
+                </div>  
+                   
+                <!-- <div class="font-size-30 textalignCenter"> <span>{{chapterName}}</span> </div>          -->
+                         
+                                                      
+                        <router-outlet></router-outlet>        
+                         <!--
+                         <div class="content">
+                            <div class="left mr-lg-32">                                    
+                                        <div  class="chapter-con">
+                                            <mat-grid-list cols="4" rowHeight="400px">
+                                                    <mat-grid-tile  *ngFor="let item of subChapters"    [colspan]="1"  [rowspan]="1"> 
+                                                     <div class="widget" fxFlex="100"   >
+
+                                                    <div class="fuse-card auto-width mb-32 ml-32 textalignCenter" [ngClass.gt-sm]="'mb-0 mr-32'" (click)="chapterClickHandler($event, item)" >
+
+                                                        <div class="p-16 pb-0" fxLayout="row wrap" fxLayoutAlign="start end">
+                                                            <div class="w-100-p">
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-8">{{item.name}}</div>                                                                     
+                                                            </div>
+                                                            <div class="w-100-p">
+                                                                <div class="h3 secondary-text">REGION</div>
+                                                                <div class="font-size-30 font-weight-300 line-height-1 mt-12 light-blue-fg">
+                                                                    {{item.region}}
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="w-100-p">
+                                                                <div class="h3 secondary-text">ACTIVITY</div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8 orange-fg">
+                                                                   {{item.activity}}
+                                                                </div>
+                                                            </div>
+                                                             <div class="w-100-p">
+                                                                <div class="h3 secondary-text">MEMBERS</div>
+                                                                <div class="font-size-24 font-weight-300 line-height-1 mt-8">
+                                                                    {{item.members}}
+                                                                </div>
+                                                            </div>                                                                
+                                                        </div>
+                                                        <div class="h-96 w-100-p">
+                                                                <img src="../../../../../assets/images/graph/graph.JPG">
+                                                        </div>
+
+                                                    </div>   
+                                                </div> 
+                                                    </mat-grid-tile>
+                                                    
+                                            </mat-grid-list>
+                                    </div>
+                                                 
+                                </div>
+
+                         </div>
+                         -->
+
+                <!--<content> </content> -->
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below static -->
+               <ng-container *ngIf="fuseConfig.layout.footer.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container> 
+                <!-- / FOOTER: Below static -->
+
+            </div>
+
+            <!-- FOOTER: Below fixed -->
+             <ng-container *ngIf="fuseConfig.layout.footer.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container> 
+            <!-- / FOOTER: Below fixed -->
+
+        </div>
+
+        <!-- NAVBAR: Right -->
+        <ng-container *ngIf="fuseConfig.layout.navbar.position === 'right'">
+            <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Right -->
+
+    </div>
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!fuseConfig.layout.sidepanel.hidden && fuseConfig.layout.sidepanel.position === 'right'"></ng-container>
+
+    <!-- PANEL CONTENT -->
+
+<!-- / SIDE PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS                                                                                            -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!fuseConfig.layout.toolbar.hidden"
+             [ngClass]="fuseConfig.layout.toolbar.customBackgroundColor === true ? fuseConfig.layout.toolbar.position + ' ' + fuseConfig.layout.toolbar.background : fuseConfig.layout.toolbar.position">
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <fuse-sidebar name="navbar" class="navbar-fuse-sidebar"
+        [folded]="fuseConfig.layout.navbar.folded"
+        [folded]="true"
+        [foldedAutoTriggerOnHover]="false"
+        lockedOpen="gt-md"
+        *ngIf="!fuseConfig.layout.navbar.hidden">
+        <navbar [variant]="fuseConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </fuse-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+ 
